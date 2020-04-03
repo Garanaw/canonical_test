@@ -1,81 +1,23 @@
-# Coding assignment
+# To see the original code assignment [click here](README.md)
 
-This coding exercise allows us to evaluate your basic knowledge and thought
-process.
+# My Approach
 
-Please complete as much of the assignment as you can. If you are unable or do
-not have the time to complete the whole assignment, please just send us as much
-as you have managed to complete.
+I was not really sure if the provided files were to be modified, however I wanted to take a real OOP approach, which involves some aditions in the Person class to provide a bit of behavior.
 
-For all of the tasks below, we'd like to see an answer in Python. However if
-you would rather provide a similar solution in another language that better
-shows your programming facility, we will be happy to review it instead.
+## Task 1:
 
-# Tasks
+The provided solution checks if the provided Person belongs to the provided Team (in case it is a Team) by asking the Person itself.
 
-Launchpad uses "Teams" to group people.  People may be members of teams, and
-teams may also be members of teams.  Because teams can be used in most ways
-that People can, Teams and People are both represented through the Person
-class.
+## Task 2:
 
-The Person class (available in `person.py`) has these attributes:
+Part of the code writen for the first task has been modified to recursively call the same method in the subsequent teams (called sub-teams in the code). Also, a few extra helper methods have been added to determine whether the target object is a Team and to extract both, Teams and Members that are not teams.
 
-- `id` (a unique integer)
-- `displayname` (a string)
-- `is_team` (a boolean)
-- `members` (a list for teams, None for non-team persons)
+## Task 3
 
+By inspecting the provided data fixtures, I could understand that the requirement is to retrieve all the members that belongs to the passed in team AND all the members that belongs to the sub-teams in the passed in team.
 
-## Task one
+This has been resolved with a similar approach than the previous task: applying recursion. The problem I had to face here was when checking for the members in the data3 fixture: as I could see, there is a circular reference in the teams. This was solved by setting a checkpoint at the begining of the process that matches the initial team. Once the whole circle has been completed, an empty list is returned (there is no need to still check for the members of the current team, as they are listed at the end of the process anyways).
 
-Write a function that accepts a person and a list of all
-people/teams and returns a list of all the teams of which that
-person is a member. You can import the "people" list from
-`data1.py` to use as example data when writing your function.
+# Personal thoughts:
 
-This code (where your function is named `exercise1`)...
-
-``` python
->>> import data1
->>> print [t.displayname for t in exercise1(data1.alice, data1.people)]
-```
-
-...should result in this being printed:
-
-``` python
-['The A-Team', 'The C-Team']
-```
-
-## Task two
-
-Does your function produce the same results as expected in
-question 1 when you pass it the "people" list from `data2.py`
-and alice (also from `data2.py`)?  If not, modify your function
-so that it works correctly given that data.
-
-## Task three
-
-Write a function that gets all the people (not teams) who are
-direct and indirect members of a team.  Using `data2.py`, this code
-(where your function is named `get_people`)...
-
-``` python
->>> import data2
->>> print sorted(p.displayname for p in get_members(data2.c_team))
-```
-
-...should result in this being printed:
-
-``` python
-['Alice', 'Bob', 'Carlos', 'Charlie', 'Eve']
-```
-
-Now look at `data3.py`.  Figure out what the correct answer should be for
-`get_members(data3.c_team)`, and make sure your function performs as you
-expect.
-
-### Returning the assignment
-
-Please create a git repository from your work and return this repository in a
-zipped tar archive.
-
+After a few years without touching Python, it has been really fun to come back to the language. Also, the task itself was an interesting problem to solve.
