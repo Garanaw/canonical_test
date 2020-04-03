@@ -1,4 +1,4 @@
-# To see the original code assignment [click here](README.md)
+# To see the original code assignment [click here](ASSIGNMENT.md)
 
 # My Approach
 
